@@ -6,5 +6,11 @@
     <color name="button">#FF000000</color>
     <color name="buttonText">#FFFFFFFF</color>
 
+    <color name="outline">#bbb</color>
+
     <color name="favorite">#f7c307</color>
+
+    <color name="error">#FF0000</color>
+
+    <color name="danger">#BE1C1C</color>
 </resources>

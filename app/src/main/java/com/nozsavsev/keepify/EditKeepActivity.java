@@ -1,7 +1,6 @@
 package com.nozsavsev.keepify;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class EditKeepActivity extends AppCompatActivity {
