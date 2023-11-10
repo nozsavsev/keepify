@@ -20,14 +20,25 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="button">#FF000000</color>
-    <color name="buttonText">#FFFFFFFF</color>
+    <color name="text">#FF000000</color>
 
-    <color name="outline">#bbb</color>
+    <color name="button">#030712</color>
+    <color name="buttonText">#e5e7eb</color>
 
-    <color name="favorite">#f7c307</color>
+    <color name="outline">#6b7280</color>
 
-    <color name="error">#FF0000</color>
+    <color name="favorite">#f59e0b</color>
 
-    <color name="danger">#BE1C1C</color>
+    <color name="error">#991b1b</color>
+
+    <color name="danger">#dc2626</color>
+
+    <color name="gray1">#f3f4f6</color>
+    <color name="gray2">#e5e7eb</color>
+    <color name="gray3">#d1d5db</color>
+    <color name="gray4">#9ca3af</color>
+    <color name="gray5">#6b7280</color>
+    <color name="gray6">#4b5563</color>
+    <color name="gray7">#374151</color>
+    <color name="gray8">#1f2937</color>
 </resources>

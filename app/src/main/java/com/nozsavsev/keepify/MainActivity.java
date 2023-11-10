@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,19 +55,32 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.flHome, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.flFavorites, new FavoritesFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.flAccount, new AccountFragment()).commit();
+
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
             if (R.id.home == item.getItemId())
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new HomeFragment()).commit();
+            {
+                findViewById(R.id.flHome).setVisibility(View.VISIBLE);
+                findViewById(R.id.flFavorites).setVisibility(View.GONE);
+                findViewById(R.id.flAccount).setVisibility(View.GONE);
+            }
 
             if (R.id.favorites == item.getItemId())
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new FavoritesFragment()).commit();
-
+            {
+                findViewById(R.id.flHome).setVisibility(View.GONE);
+                findViewById(R.id.flFavorites).setVisibility(View.VISIBLE);
+                findViewById(R.id.flAccount).setVisibility(View.GONE);
+            }
             if (R.id.account == item.getItemId())
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new AccountFragment()).commit();
-
+            {
+                findViewById(R.id.flHome).setVisibility(View.GONE);
+                findViewById(R.id.flFavorites).setVisibility(View.GONE);
+                findViewById(R.id.flAccount).setVisibility(View.VISIBLE);
+            }
             return true;
         });
     }
