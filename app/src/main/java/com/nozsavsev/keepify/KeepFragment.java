@@ -16,6 +16,7 @@
         */
 package com.nozsavsev.keepify;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -74,7 +75,7 @@ public class KeepFragment extends Fragment {
         }
 
         title.setText(keep.title);
-        description.setText(keep.content);
+        description.setText(keep.content.substring(0, Math.min(keep.content.length(), 150)) + ((keep.content.length() > 200 ? "..." : "") ));
 
         ((ImageButton) rootView.findViewById(R.id.deleteKeepButton)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +97,17 @@ public class KeepFragment extends Fragment {
             public void onClick(View v) {
                 keep.isFavorite = !keep.isFavorite;
                 KeepManager.getInstance().updateKeep(keep);
+            }
+        });
+
+
+        rootView.findViewById(R.id.keepLayout).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(getContext(), EditKeepActivity.class);
+                intent.putExtra("KEEP", keep);
+                startActivity(intent);
+                return false;
             }
         });
 

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
 Keepify
 Copyright (C) 2023  Ilia Nozdrachev
 
@@ -16,14 +17,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="15dp"
-    android:layout_marginBottom="15dp"
-    android:background="@drawable/keep_background"
-    tools:context=".KeepFragment">
+    android:layout_height="match_parent"
+    tools:context=".ViewKeepFragment">
+
 
     <LinearLayout
         android:id="@+id/keepLayout"
@@ -97,4 +95,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
     </LinearLayout>
+
+
 </FrameLayout>

@@ -1,3 +1,20 @@
+/*
+Keepify
+Copyright (C) 2023  Ilia Nozdrachev
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
 package com.nozsavsev.keepify;
 
 import android.content.Intent;
@@ -36,34 +53,46 @@ public class AccountFragment extends Fragment {
 
     }
 
+    View rootView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_account, container, false);
+        rootView = inflater.inflate(R.layout.fragment_account, container, false);
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        ((TextView) rootView.findViewById(R.id.greetingsText)).setText("Hello, " + auth.getCurrentUser().getEmail().substring(0, auth.getCurrentUser().getEmail().indexOf('@')) + "!");
-
-        ((Button) rootView.findViewById(R.id.logout)).setOnClickListener(new View.OnClickListener() {
+        auth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onClick(View v) {
-                auth.signOut();
+            public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
+                if (auth.getCurrentUser() != null) {
 
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
 
-        ((Button) rootView.findViewById(R.id.deleteAccount)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auth.getCurrentUser().delete();
+                    ((TextView) rootView.findViewById(R.id.greetingsText)).setText("Hello, " + auth.getCurrentUser().getEmail().substring(0, auth.getCurrentUser().getEmail().indexOf('@')) + "!");
 
-                Intent intent = new Intent(getActivity(), RegisterActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                    ((Button) rootView.findViewById(R.id.logout)).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            auth.signOut();
+
+                            Intent intent = new Intent(getActivity(), LoginActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
+                    });
+
+                    ((Button) rootView.findViewById(R.id.deleteAccount)).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            auth.getCurrentUser().delete();
+
+                            Intent intent = new Intent(getActivity(), RegisterActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
+                    });
+
+                }
             }
         });
 
