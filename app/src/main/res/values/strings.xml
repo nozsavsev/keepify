@@ -11,6 +11,8 @@
         &#8226; If you add keeps from favorites screen them will be favorite by default, change it by tapping start icon.
    </string>
 
+    <string name="terms_promo">By registering you agree to our\n<u>Terms of Service</u> and <u>Privacy Policy</u>.</string>
+
 
     <string name="lorem">
         &#8226; Tap your keep to view it in a full screen mode.

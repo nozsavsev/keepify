@@ -78,8 +78,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:boxBackgroundColor="@color/white"
             android:hint="Password"
+            app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -99,7 +99,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="40dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/button"
             android:paddingVertical="15dp"
@@ -107,6 +106,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             android:textColor="@color/buttonText"
             android:textSize="20sp"
             app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/terms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/terms_promo"
+            android:textAlignment="center" />
+
 
         <LinearLayout
             android:layout_width="match_parent"

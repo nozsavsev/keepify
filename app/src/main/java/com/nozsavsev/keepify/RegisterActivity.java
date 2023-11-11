@@ -21,6 +21,7 @@ package com.nozsavsev.keepify;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -43,6 +44,14 @@ public class RegisterActivity extends AppCompatActivity {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
+        });
+
+        findViewById(R.id.terms).setOnClickListener(v -> {
+
+            Uri uri = Uri.parse("https://nozsavsev.github.io/keepify");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+
         });
 
         ((TextInputEditText) findViewById(R.id.email)).addTextChangedListener(new TextWatcher() {
