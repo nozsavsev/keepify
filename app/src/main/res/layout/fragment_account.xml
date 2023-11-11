@@ -82,5 +82,22 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             app:iconSize="25sp"
             app:iconTint="@color/buttonText" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:backgroundTint="@color/white"
+            android:paddingVertical="15dp"
+            android:text="Information"
+            android:textColor="@color/button"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"
+            app:strokeWidth="2dp"
+            app:icon="@drawable/info"
+            app:iconGravity="textStart"
+            app:iconSize="25sp"
+            app:iconTint="@color/button" />
+
     </LinearLayout>
 </FrameLayout>

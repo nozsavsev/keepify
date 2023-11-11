@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,9 +82,22 @@ public class AccountFragment extends Fragment {
                         }
                     });
 
+                    rootView.findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GreetingsModalFragment dialogFragment = new GreetingsModalFragment();
+                            dialogFragment.show(getActivity().getSupportFragmentManager(), "GreetingsModalFragment");
+                        }
+                    });
                     ((Button) rootView.findViewById(R.id.deleteAccount)).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance("https://keepify-b3b94-default-rtdb.europe-west1.firebasedatabase.app");
+                            ;
+
+                            database.getReference(auth.getCurrentUser().getUid()).removeValue();
+
                             auth.getCurrentUser().delete();
 
                             Intent intent = new Intent(getActivity(), RegisterActivity.class);

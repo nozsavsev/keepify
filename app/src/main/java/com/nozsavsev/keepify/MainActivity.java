@@ -45,12 +45,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        if(AppPreferences.isFirstRun(this))
-        {
-            GreetingsModalFragment dialogFragment = new GreetingsModalFragment();
-            dialogFragment.show(getSupportFragmentManager(), "GreetingsModalFragment");
-        }
-
     }
 
     @Override
