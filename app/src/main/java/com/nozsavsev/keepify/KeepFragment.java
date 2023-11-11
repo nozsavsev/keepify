@@ -101,6 +101,15 @@ public class KeepFragment extends Fragment {
         });
 
 
+        rootView.findViewById(R.id.keepLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ViewKeepActivity.class);
+                intent.putExtra("KEEP", keep);
+                startActivity(intent);
+            }
+        });
+
         rootView.findViewById(R.id.keepLayout).setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
