@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:color="#000" /> <!-- Set the desired active icon color, e.g., red -->
-    <item android:color="#444" /> <!-- Set the desired inactive icon color, e.g., gray -->
-</selector>
