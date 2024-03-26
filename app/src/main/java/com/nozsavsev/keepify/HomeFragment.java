@@ -41,12 +41,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+/**
+ * HomeFragment is a Fragment that displays the home screen of the application.
+ * It manages the display of Keep objects in a scrollable view.
+ */
 public class HomeFragment extends Fragment {
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+    // Required empty public constructor
+    public HomeFragment() {}
 
+    /**
+     * Factory method to create a new instance of this fragment.
+     * @return A new instance of HomeFragment.
+     */
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
@@ -57,14 +64,15 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    //destructor
+    /**
+     * Destructor that removes the Keep update listener when the fragment is destroyed.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (keepUpdatedEventListner != null)
             KeepManager.getInstance().deleteKeepListner(keepUpdatedEventListner);
     }
-
 
     private View rootView;
     private FragmentManager fragmentManager;
@@ -74,19 +82,32 @@ public class HomeFragment extends Fragment {
     private boolean viewUpdatePending = false;
     private boolean blockUpdate = false;
 
+    /**
+     * Called when the fragment is visible to the user and actively running.
+     * This is generally tied to Activity.onResume of the containing Activity's lifecycle.
+     */
     @Override
     public void onResume() {
         super.onResume();
         blockUpdate = false;
-            updateKeepsView();
+        updateKeepsView();
     }
 
+    /**
+     * Called when the system is about to start resuming a previous activity.
+     * This is typically used to commit unsaved changes to persistent data, stop animations and other things that may be consuming CPU.
+     */
     @Override
     public void onPause() {
         super.onPause();
         blockUpdate = true;
     }
 
+    /**
+     * Updates the view that displays the Keep objects.
+     * If the view update is not pending or updates are blocked, the method returns immediately.
+     * Otherwise, it updates the view based on the current list of Keep objects.
+     */
     private void updateKeepsView() {
         if (viewUpdatePending == false || blockUpdate == true)
             return;
@@ -150,7 +171,14 @@ public class HomeFragment extends Fragment {
 
     }
 
-
+    
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return Return the View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
