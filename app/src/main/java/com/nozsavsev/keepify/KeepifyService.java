@@ -14,6 +14,7 @@ public class KeepifyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
 
+        System.out.println("Service started");
         sendNotification("Hi there", "The app has been opened.");
         return START_STICKY;
     }
@@ -35,8 +36,8 @@ public class KeepifyService extends Service {
 
     @Override
     public void onDestroy() {
-        sendNotification("App Exited", "Your app has been closed.");
         super.onDestroy();
+        sendNotification("App Exited", "Your app has been closed.");
     }
 
     @Override

@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
 
+        createNotificationChannel();
+
+        Intent serviceIntent = new Intent(this, KeepifyService.class);
+        startService(serviceIntent);
+
         if (user == null) {
             Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
@@ -77,10 +82,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createNotificationChannel();
 
-        Intent serviceIntent = new Intent(this, KeepifyService.class);
-        startService(serviceIntent);
 
         networkChangeReceiver = new NetworkChangeReceiver();
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
