@@ -18,14 +18,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package com.nozsavsev.keepify;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,6 +53,19 @@ public class MainActivity extends AppCompatActivity {
 
     private NetworkChangeReceiver networkChangeReceiver;
 
+    private void createNotificationChannel() {
+
+        {
+            CharSequence name = "startedNotifyChannel";
+            String description = "startedNotifyChannel";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("startedNotifyChannel", name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -61,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        createNotificationChannel();
+
+        Intent serviceIntent = new Intent(this, KeepifyService.class);
+        startService(serviceIntent);
 
         networkChangeReceiver = new NetworkChangeReceiver();
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
